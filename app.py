@@ -22,19 +22,21 @@ def getData(year):
 
     return filteredRevenue.to_json(orient="records")
 
-@app.route("/api"):
+
+@app.route("/api")
 def api():
-    con = sqlite3.connect("players_20.db")
     return {"x": 20}
 
-@app.route("/player/count")
+
+@app.route("/players/count")
 def count_players():
     con = sqlite3.connect("players_20.db")
     cur = con.cursor()
     result = cur.execute("SELECT COUNT(*) FROM players")
     return {"count": result.fetchone()[0]}
 
-@app.route("/player/get_nationality")
+
+@app.route("/players/get_nationality")
 def get_nationality():
     con = sqlite3.connect("players_20.db")
     cur = con.cursor()
